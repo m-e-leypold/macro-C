@@ -1,0 +1,9 @@
+* RELEASE macro-c 0.0.1 78ce718c119546e899171504311dd07e42521d48
+
+- Initial release.
+
+- Initial version of exception handling (excn/, macros
+  EXCEPTIONS/TRY/CATCH/FINALLY)
+
+- README, licensing term.
+

@@ -1,0 +1,74 @@
+* -*- mode:org -*-
+
+#+STARTUP: content
+#+STARTUP: indent
+#+STARTUP: oddeven
+
+
+* ABOUT macro-C
+
+(THIS IS A DUMMY CURRENTLY)
+
+* Installation
+
+There is currently no way to install this library. Just copy the
+header files into you project and use the implementation files (*.c)
+as starting point to extend the runtime.
+
+The runtime is currently not only usable as-is under very limited
+circumstances (as of 2014-11-01 there is no support for multi-treaded
+programs), so some adaptions might be necessary.
+
+Please consider the [[License]] before use. This library being mostly
+header files means that it can probably only be used in GPL compatible
+projects, BUT dual licensing is available:
+
+- Documented and proven free software projects probably only have to
+  ask.
+
+- Commercial users will also have to ask, and probably will get an
+  alternative license for a minor licensing fee. I insist on that they
+  ask, though: I seriously dislike the habit of grabbing parts of free
+  software project for their own without caring for licensing terms -
+  a habit a major part of the software-for-money industry seems to
+  have fallen into during the last dekade.
+
+  This file is to narrow to contain a full treatise on that - but
+  approximately half of the devices I currently buy and which run
+  embedded Linux seem not to be accompanied by the proper licensing
+  documents, nor seem the distributors willing to disgorge the source,
+  all patches and/or proper build scripts ...
+
+  So: Commercial users needing a different license: Please ask. We'll
+  find a way to come together. If you cannot be bothered to
+  communicate, though, using my software is probably not important
+  enough for you. I can live with that. Just don't use it or stick to
+  the existing [[License]].
+
+Of course I reserve my right to stop any time giving out dual
+licenses.
+
+* License
+
+Macro-C -- Preprocessor based language extensions to C99.
+Copyright (C) 2013,2014 -- M E Leypold
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+* #
+# Local Variables:
+# eval: (visual-line-mode)
+# End:
+
+
