@@ -100,7 +100,7 @@ int main(){
 	  do_something(ex2); 
 	}
 	CATCH(ex2){
-	  printf("CATCHING\2n");
+	  printf("CATCHING2\n");
 	} ELSE {
 	  printf("ELSE2\n");
 	  assert(NOT_REACHED);
