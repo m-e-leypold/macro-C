@@ -17,7 +17,7 @@
 default: help
 
 -include $(shell mklib build-everything-now.mklib)
-EXTRA-IGNORE-DIRECTORIES = labnet Release experiments
+EXTRA-IGNORE-DIRECTORIES = labnet Release experiments mcpp
 CFLAGS = -std=c99 -O3 
 $(BUILD-EVERYTHING-NOW)
 

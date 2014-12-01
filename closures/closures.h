@@ -25,27 +25,29 @@
 
 // Types and generic operations
 
-#define Closure_type(name,...)    name##_calltype(void*,int);  struct  name; typedef struct name name; \
-  struct name {                   \
-     name##_calltype* call;       \
-     void* data;                  \
-   }
+#define Closure_type(name,...)    name##_resulttype; typedef name##_resulttype name##_calltype(void*,__VA_ARGS__); \
+  struct  name; typedef struct name name;  \
+  struct name {				   \
+    name##_calltype* call;		   \
+    void* data;				   \
+  }
 
 #define call_Closure(c,...) c.call(c.data,__VA_ARGS__)
 #define free_Closure(c,...) free(c.data)
 
 // Implementations
 
-#define declare_Closure_implementation(name, closuretype, datatype, ...)   \
-  typedef     closuretype             name##_closuretype;                  \
-  typedef     datatype                name##_datatype;                     \
-  int         name##_evaluate         (datatype* datatype, __VA_ARGS__)    \
+#define declare_Closure_implementation(name, closuretype, datatype, ...) \
+  typedef     closuretype             name##_closuretype;		\
+  typedef     datatype                name##_datatype;			\
+  closuretype##_resulttype            name##_evaluate         (datatype* datatype, __VA_ARGS__)
 
+  
 #define define_Closure_implementation(name, closuretype, datatype, ...)     \
   declare_Closure_implementation(name, closuretype, datatype, __VA_ARGS__); \
-  int         name##_dispatch         (void* data,__VA_ARGS__)          { return name##_evaluate(data,num); }               \
+  closuretype##_resulttype            name##_dispatch         (void* data,__VA_ARGS__)          { return name##_evaluate(data,num); } \
   closuretype name##_create           (datatype* r)                     { closuretype c = {&name##_dispatch,r}; return c; } \
-  int         name##_evaluate         (datatype* datatype, __VA_ARGS__)   /* ... { ... evaluation body ... } */  
+  closuretype##_resulttype            name##_evaluate         (datatype* datatype, __VA_ARGS__)   /* ... { ... evaluation body ... } */  
 
 // Constructors
 
@@ -63,6 +65,9 @@
 
 #define LOCAL_CLOSURE(name,constructor,lid,...)     name;  constructor##_##datatype   lid;  name = constructor##_##create(&(lid), __VA_ARGS__);
 #define local_Closure(name,constructor,...) LOCAL_CLOSURE(name,constructor,NEW_LID(constructor),__VA_ARGS__)
+
+#define STATIC_CLOSURE(name,constructor,lid,...)     static name = {0,0};  static constructor##_##datatype   lid;  if (!name.call) { name = constructor##_##create(&(lid), __VA_ARGS__); }
+#define static_Closure(name,constructor,...)         STATIC_CLOSURE(name,constructor,NEW_LID(constructor),__VA_ARGS__)
 
 #define NEW_CLOSURE(constructor,...)  constructor##_##create(malloc(sizeof(constructor##_##datatype)), __VA_ARGS__ );
 #define new_Closure(constructor,...)  NEW_CLOSURE(constructor,__VA_ARGS__)
