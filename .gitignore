@@ -1,2 +1,6 @@
 /labnet
 /Release
+*.o
+/.var
+/.run
+/.log

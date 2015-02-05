@@ -1,3 +1,6 @@
+#ifndef H_INCLUDED_LSD_MACRO_C_EXCN
+#define H_INCLUDED_LSD_MACRO_C_EXCN
+
 /* Macro-C -- Preprocessor based language extensions to C99.
  * Copyright (C) 2014 -- M E Leypold
  * 
@@ -43,9 +46,6 @@
  *   ELSE       -- execute, if other exceptions have been thrown, exceptions will be reraised
  *   FINALLY    -- executed in any case (normal block exit, stack unwind)
  */
-
-#ifndef H_INCLUDED_LSD_MACRO_C_EXCN
-#define H_INCLUDED_LSD_MACRO_C_EXCN
 
 #include <setjmp.h>
 
